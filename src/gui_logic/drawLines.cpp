@@ -41,7 +41,4 @@ void drawLines(sf::RenderWindow& window) {
         line.setFillColor(sf::Color::Red);
         window.draw(line);
     }
-
-
-    // window.draw(line);
 }

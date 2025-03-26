@@ -1,9 +1,11 @@
 #include <SFML/Graphics.hpp>
 
 #include "common.h"
+#include "debug.h"
 #include <iostream>
 
 #include "gui_logic/drawLines.h"
+#include "gui_logic/drawSymbols.h"
 
 int main(){
     sf::RenderWindow window(sf::VideoMode({Common::SCREEN_WIDTH, Common::SCREEN_HEIGHT}), "Tic Tac Toe");
@@ -15,8 +17,12 @@ int main(){
             }
         }
         window.clear(sf::Color::White);
-        std::cout << sf::Mouse::getPosition(window).x << ", " << sf::Mouse::getPosition(window).y << "\n";
+
         drawLines(window);
+
+        Debug::PrintCoordinatesToText(window);
+
+
         window.display();
     }
 }
