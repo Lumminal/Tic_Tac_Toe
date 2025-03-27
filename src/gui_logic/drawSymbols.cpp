@@ -24,9 +24,9 @@ void drawSymbol(char type, sf::RenderWindow& window, sf::Vector2f positionToDraw
             lineRight.setOrigin(sf::Vector2f(75.0, 2.5));
             lineLeft.setOrigin(sf::Vector2f(75.0, 2.5));
 
-            // Add Custom Position Here
-            lineRight.setPosition(sf::Vector2f(sf::priv::InputImpl::getMousePosition(window)));
-            lineLeft.setPosition(sf::Vector2f(sf::priv::InputImpl::getMousePosition(window)));
+
+            lineRight.setPosition(positionToDraw);
+            lineLeft.setPosition(positionToDraw);
 
 
 
@@ -39,8 +39,12 @@ void drawSymbol(char type, sf::RenderWindow& window, sf::Vector2f positionToDraw
         {
             sf::CircleShape circle({50.0f});
 
-            circle.setFillColor(sf::Color::Blue);
+            circle.setFillColor(sf::Color::Transparent);
 
+            circle.setOutlineColor(sf::Color(200, 255, 104));
+            circle.setOutlineThickness(5.0f);
+
+            circle.setPosition(positionToDraw);
 
             window.draw(circle);
         }

@@ -5,5 +5,7 @@ add_executable(Tic_Tac_Toe main.cpp
         gui_logic/drawSymbols.h
         gui_logic/drawSymbols.cpp
         debug.h
+        game_logic/occupation.h
+        game_logic/occupation.cpp
 )
 target_link_libraries(Tic_Tac_Toe PRIVATE SFML::Graphics)
