@@ -7,5 +7,15 @@ add_executable(Tic_Tac_Toe main.cpp
         debug.h
         game_logic/occupation.h
         game_logic/occupation.cpp
+        game_logic/turn.h
+        game_logic/aiLogic.h
+        game_logic/aiLogic.cpp
+        game_logic/winCondition.h
+        game_logic/winCondition.cpp
+        utils.h
+        gui_logic/scenes/sceneManager.h
+        gui_logic/scenes/sceneManager.cpp
+        gui_logic/scenes/gameScene.h
+        gui_logic/scenes/gameFinishedScene.h
 )
 target_link_libraries(Tic_Tac_Toe PRIVATE SFML::Graphics)

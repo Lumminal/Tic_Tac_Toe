@@ -10,7 +10,6 @@
 // Draw the user-inputted symbols to the screen.
 //
 // type: Either 'O' or 'X'.
-// window: Window to draw to.
 void drawSymbol(char type, sf::RenderWindow& window, sf::Vector2f positionToDraw);
 
 #endif //DRAWSYMBOLS_H

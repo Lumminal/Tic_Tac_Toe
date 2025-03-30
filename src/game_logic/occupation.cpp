@@ -4,84 +4,61 @@
 
 #include "../gui_logic/drawSymbols.h"
 #include "occupation.h"
+#include "winCondition.h"
 
 #include <algorithm>
 #include <cmath>
 
-bool canDrawOnSquare(const sf::RenderWindow& window) {
-
-    // Player
-    for (unsigned int i = 0; i < squares; ++i) {
-        if (isButtonPressed(sf::Mouse::Button::Left) && !isOccupied[i]) {
-            mousePosition = sf::Vector2f(sf::Mouse::getPosition(window));
-            return true;
-        }
+bool canDrawOnSquare() {
+    if (isButtonPressed(sf::Mouse::Button::Left) && currentTurn == Turn::playerTurn) {
+        return true;
     }
     return false;
 }
 
-void drawOnSquareScreen(sf::RenderWindow& window) {
+void drawOnSquareScreen(const sf::RenderWindow& window) {
+    if (canDrawOnSquare()) {
+        mousePosition = sf::Vector2f(sf::Mouse::getPosition(window));
+        unsigned int index {calculateDistance(mousePosition, placementCoordinates)};
+        if (isOccupied[index / squaresRow][index % squaresCol]) {
+                return;
+        }
 
-    unsigned int indexToDraw {calculateDistance(mousePosition)};
-    if (canDrawOnSquare(window)) {
-            drawSymbol('O', window, placementCoordinates[indexToDraw] - circleCenterModifier);
-    }
+        isOccupied[index / squaresRow][index % squaresCol] = true;
+        symbolBeingOccupied[index / squaresRow][index % squaresCol] = 'O';
 
-    for (unsigned int i = 0; i < squares; ++i) {
-        // make it stay forever on screen
+        currentTurn = Turn::computerTurn;
+        computerAiLogic();
     }
 }
 
+void drawAllSymbols(sf::RenderWindow& window) {
+    drawOnSquareScreen(window);
 
-// On Game Start, fill the given arrays.
-void initfillCoordinates() {
-    int X   {0};
-    int Y {100};
-
-    for (unsigned int i = 0; i < squares; ++i) {
-        // False by default
-        isOccupied[i] = false;
-
-        if (i == 0) {
-            X = 150;
-        } else {
-            X += 300;
+    for (unsigned int i = 0; i < squaresRow; ++i) {
+        for (unsigned int j = 0; j < squaresCol; ++j) {
+            if (isOccupied[i][j]) {
+                if (symbolBeingOccupied[i][j] == 'O') {
+                    drawSymbol('O', window, placementCoordinates[i * 3 + j] - circleCenterModifier);
+                } else if (symbolBeingOccupied[i][j] == 'X') {
+                    drawSymbol('X', window, placementCoordinates[i * 3 + j]);
+                }
+            }
         }
-
-        if (i % 3 == 0 && i != 0) {
-            Y += 200;
-            X = 150;
-        }
-
-        // Default Coordinates
-        placementCoordinates[i] = sf::Vector2f(X, Y);
     }
 }
 
+int getOccupiedSquares() {
+    int occupiedSquares {0};
 
-unsigned int calculateDistance(sf::Vector2f& vectorToCompare) {
-
-    unsigned int                min                     {0};
-    double                      X                        {};
-    double                      Y                        {};
-    double                      distance                 {};
-    std::array<double, squares> distances                {};
-
-    for (unsigned int i = 0; i < squares; ++i) {
-        X = vectorToCompare.x - placementCoordinates[i].x;
-        Y = vectorToCompare.y - placementCoordinates[i].y;
-
-        distance = std::sqrt(pow(X, 2) + pow(Y, 2));
-        distances[i] = distance;
-    }
-
-    for (unsigned int i = 1; i < squares; ++i) {
-        if (distances[i] < distances[min]) {
-            min = i;
+    for (unsigned int i = 0; i < squaresRow; ++i) {
+        for (unsigned int j = 0; j < squaresCol; ++j) {
+            if (isOccupied[i][j]) {
+                occupiedSquares++;
+            }
         }
     }
-
-    return min;
+    return occupiedSquares;
 }
 
 

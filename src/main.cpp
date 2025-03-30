@@ -4,14 +4,14 @@
 #include "debug.h"
 #include <iostream>
 
-#include "gui_logic/drawLines.h"
-
+#include "gui_logic/scenes/sceneManager.h"
 #include "game_logic/occupation.h"
+#include "utils.h"
 
 int main(){
     sf::RenderWindow window(sf::VideoMode({Common::SCREEN_WIDTH, Common::SCREEN_HEIGHT}), "Tic Tac Toe");
 
-    initfillCoordinates();
+    initfillCoordinates(placementCoordinates);
 
     while (window.isOpen()) {
         while (const std::optional event = window.pollEvent()) {
@@ -19,15 +19,12 @@ int main(){
                 window.close();
             }
         }
+
         window.clear(sf::Color::White);
 
-        drawLines(window);
+        checkScenes(window);
 
-        drawOnSquareScreen(window);
-
-        Debug::PrintCoordinatesToText(window);
-
-
+        //Debug::PrintCoordinatesToText(window);
         window.display();
     }
 }

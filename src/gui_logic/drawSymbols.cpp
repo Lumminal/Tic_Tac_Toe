@@ -3,8 +3,6 @@
 //
 #include "drawSymbols.h"
 
-#include "../../cmake-build-debug/_deps/sfml-src/src/SFML/Window/InputImpl.hpp"
-
 
 void drawSymbol(char type, sf::RenderWindow& window, sf::Vector2f positionToDraw) {
     assert(type == 'X' || type == 'O' && "DrawSymbol: type not recognized");

@@ -3,6 +3,8 @@
 //
 #include "drawLines.h"
 
+#include <iostream>
+
 // Draw 2x2 Lines
 void drawLines(sf::RenderWindow& window) {
     //Draw single line
