@@ -1,13 +1,6 @@
-//
-// Created by left on 27/3/2025.
-//
-
 #include "../gui_logic/drawSymbols.h"
 #include "occupation.h"
-#include "winCondition.h"
-
-#include <algorithm>
-#include <cmath>
+#include "../audioPlayback.h"
 
 bool canDrawOnSquare() {
     if (isButtonPressed(sf::Mouse::Button::Left) && currentTurn == Turn::playerTurn) {
@@ -26,6 +19,9 @@ void drawOnSquareScreen(const sf::RenderWindow& window) {
 
         isOccupied[index / squaresRow][index % squaresCol] = true;
         symbolBeingOccupied[index / squaresRow][index % squaresCol] = 'O';
+
+        // Sound
+        placeOsound.play();
 
         currentTurn = Turn::computerTurn;
         computerAiLogic();

@@ -1,7 +1,3 @@
-//
-// Created by left on 26/3/2025.
-//
-
 #ifndef DEBUG_H
 #define DEBUG_H
 #include "common.h"

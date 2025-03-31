@@ -1,7 +1,3 @@
-//
-// Created by left on 29/3/2025.
-//
-
 #ifndef SCENEMANAGER_H
 #define SCENEMANAGER_H
 #include <SFML/Graphics.hpp>
@@ -10,8 +6,9 @@
 enum class Scenes {
     game,
     gameFinished,
+    mainMenu,
 };
-inline Scenes currentScene = Scenes::game;
+inline Scenes currentScene = Scenes::mainMenu;
 
 void changeScene(Scenes newScene);
 void checkScenes(sf::RenderWindow& window);

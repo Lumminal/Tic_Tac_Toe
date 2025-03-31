@@ -1,7 +1,3 @@
-//
-// Created by left on 29/3/2025.
-//
-
 #ifndef TURN_H
 #define TURN_H
 #include "occupation.h"

@@ -1,9 +1,6 @@
-//
-// Created by left on 29/3/2025.
-//
-
 #ifndef GAMEFINISHEDSCENE_H
 #define GAMEFINISHEDSCENE_H
+
 #include "../../game_logic/winCondition.h"
 #include "../../game_logic/occupation.h"
 #include "../../game_logic/turn.h"
@@ -31,9 +28,8 @@ inline void gameFinishedScene(sf::RenderWindow& window) {
     text.setString(stringToShow);
     text.setPosition({Common::SCREEN_WIDTH / 2.0 + 200, Common::SCREEN_HEIGHT / 2.0});
     text.setOrigin({Common::SCREEN_WIDTH / 2.0, Common::SCREEN_HEIGHT / 2.0});
-    text.setFillColor(sf::Color::Green);
+    text.setFillColor(sf::Color::Red);
     text.setCharacterSize(36);
-    text.setOutlineThickness(5.0f);
 
     if (isKeyPressed(sf::Keyboard::Key::R)) {
         clearArray(isOccupied);

@@ -1,7 +1,3 @@
-//
-// Created by left on 26/3/2025.
-//
-
 #ifndef DRAWSYMBOLS_H
 #define DRAWSYMBOLS_H
 

@@ -1,7 +1,3 @@
-//
-// Created by left on 29/3/2025.
-//
-
 #ifndef UTILS_H
 #define UTILS_H
 
@@ -17,7 +13,7 @@ void clearArray(std::array<std::array<T, 3>, 3>& arr) {
     }
 }
 
-// Fill the PlacementCoordinates (occupation.h) array with the Coordinates of where the symbols can be drawn.
+// Fill the PlacementCoordinates (in occupation.h) array with the Coordinates of where the symbols can be drawn.
 inline void initfillCoordinates(std::array<sf::Vector2f, 9>& coords) {
     int X   {0};
     int Y {100};

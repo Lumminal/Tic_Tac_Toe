@@ -1,7 +1,3 @@
-//
-// Created by left on 25/3/2025.
-//
-
 #ifndef COMMON_H
 #define COMMON_H
 #include <SFML/Graphics.hpp>

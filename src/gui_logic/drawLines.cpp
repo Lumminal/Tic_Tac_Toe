@@ -1,9 +1,4 @@
-//
-// Created by left on 25/3/2025.
-//
 #include "drawLines.h"
-
-#include <iostream>
 
 // Draw 2x2 Lines
 void drawLines(sf::RenderWindow& window) {

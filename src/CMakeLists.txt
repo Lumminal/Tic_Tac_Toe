@@ -17,5 +17,7 @@ add_executable(Tic_Tac_Toe main.cpp
         gui_logic/scenes/sceneManager.cpp
         gui_logic/scenes/gameScene.h
         gui_logic/scenes/gameFinishedScene.h
+        gui_logic/scenes/mainMenu.h
+        audioPlayback.h
 )
-target_link_libraries(Tic_Tac_Toe PRIVATE SFML::Graphics)
+target_link_libraries(Tic_Tac_Toe PRIVATE SFML::Graphics PRIVATE SFML::Audio)

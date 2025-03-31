@@ -1,13 +1,8 @@
-//
-// Created by left on 29/3/2025.
-//
-
 #include "sceneManager.h"
-
-#include "../../game_logic/winCondition.h"
 
 #include "gameFinishedScene.h"
 #include "gameScene.h"
+#include "mainMenu.h"
 
 void changeScene(Scenes newScene) {
     currentScene = newScene;
@@ -20,6 +15,9 @@ void checkScenes(sf::RenderWindow& window) {
         } break;
         case Scenes::gameFinished: {
             gameFinishedScene(window);
+        } break;
+        case Scenes::mainMenu: {
+            mainMenuScene(window);
         } break;
     }
 }

@@ -1,9 +1,6 @@
-//
-// Created by left on 27/3/2025.
-//
-
 #ifndef OCCUPATION_H
 #define OCCUPATION_H
+
 #include <SFML/Graphics.hpp>
 #include <array>
 #include "turn.h"

@@ -1,12 +1,11 @@
 #include <SFML/Graphics.hpp>
 
 #include "common.h"
-#include "debug.h"
-#include <iostream>
+#include "utils.h"
+
+#include "game_logic/occupation.h"
 
 #include "gui_logic/scenes/sceneManager.h"
-#include "game_logic/occupation.h"
-#include "utils.h"
 
 int main(){
     sf::RenderWindow window(sf::VideoMode({Common::SCREEN_WIDTH, Common::SCREEN_HEIGHT}), "Tic Tac Toe");
@@ -22,9 +21,8 @@ int main(){
 
         window.clear(sf::Color::White);
 
-        checkScenes(window);
+            checkScenes(window);
 
-        //Debug::PrintCoordinatesToText(window);
         window.display();
     }
 }

@@ -1,7 +1,6 @@
-//
-// Created by left on 29/3/2025.
-//
 #include "winCondition.h"
+
+#include "../audioPlayback.h"
 
 WinConditions calculateWinCondition(const char ch) {
     assert(ch == 'X' || ch == 'O' && "DrawSymbol: type not recognized");
@@ -31,27 +30,19 @@ WinConditions calculateWinCondition(const char ch) {
         }
 
         if (sumRow == sumToWin || sumCol == sumToWin || sumDiag == sumToWin || sumRDiag == sumToWin) {
-            timer.start();
             currentTurn = Turn::none; // Disable clicks
-            if (timer.getElapsedTime() >= timeToWait) {
-                timer.reset();
-                if (ch == 'X') {
-                    return WinConditions::computerWin;
-                }
+            if (ch == 'X') {
+                return WinConditions::computerWin;
+            }
                 return WinConditions::playerWin;
             }
-        }
         sumRow = 0;
         sumCol = 0;
     }
 
     if (getOccupiedSquares() == Common::squares) {
-        timer.start();
         currentTurn = Turn::none; // Disable clicks
-        if (timer.getElapsedTime() >= timeToWait) {
-            timer.reset();
-            return WinConditions::tie;
-        }
+        return WinConditions::tie;
     }
 
 
@@ -61,6 +52,15 @@ WinConditions calculateWinCondition(const char ch) {
 void checkIfSymbolHasWon(const char ch) {
     assert(ch == 'X' || ch == 'O' && "DrawSymbol: type not recognized");
     WinConditions whoWon = calculateWinCondition(ch);
+
+    if (whoWon == WinConditions::playerWin) {
+        winSound.play();
+    } else if (whoWon == WinConditions::computerWin) {
+        loseSound.play();
+    } else if (whoWon == WinConditions::tie) {
+        loseSound.play();
+    }
+
     if (whoWon != WinConditions::ongoing) {
         whoHasWon = whoWon;
         changeScene(Scenes::gameFinished);

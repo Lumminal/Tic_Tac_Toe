@@ -1,7 +1,3 @@
-//
-// Created by left on 29/3/2025.
-//
-
 #ifndef GAMESCENE_H
 #define GAMESCENE_H
 #include "../drawLines.h"

@@ -1,6 +1,3 @@
-//
-// Created by left on 26/3/2025.
-//
 #include "drawSymbols.h"
 
 
