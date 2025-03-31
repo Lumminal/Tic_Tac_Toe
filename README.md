@@ -27,8 +27,9 @@ Tested on cmake 3.31.6 with Ninja Generator
 2. Open your terminal in the cloned directory and run:
 ```
    cmake -S . -B build
-   cmake 
+   cmake --build build
 ```
+The binary should be in the build/src directory
 
 OR 
 
