@@ -18,9 +18,11 @@ The coding aspect is done in Procedural Programming, instead of OOP because I ha
 
 # How to Compile
 
-Requirments: Cmake
+Requirements: Cmake
 
-Tested on cmake 3.31.6 with Ninja Generator
+Tested on cmake 3.31.6 with Ninja Generator. 
+
+Warning: Latest Cmake version will give errors when fetching freetype. This is fixed by rolling back in an older version.
 
 1. Clone the repo ```git clone https://github.com/Lumminal/Tic_Tac_Toe```
 
